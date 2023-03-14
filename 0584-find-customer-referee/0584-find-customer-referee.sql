@@ -1,2 +1,10 @@
 /* Write your T-SQL query statement below */
-SELECT name FROM Customer WHERE  referee_id IS NULL OR referee_id <> 2;
+
+SELECT name
+FROM Customer
+WHERE id NOT IN
+(
+SELECT id
+FROM Customer
+WHERE referee_id = 2
+)
