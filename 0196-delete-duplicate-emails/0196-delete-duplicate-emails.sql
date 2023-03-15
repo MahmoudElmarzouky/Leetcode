@@ -2,7 +2,6 @@
  Please write a DELETE statement and DO NOT write a SELECT statement.
  Write your T-SQL query statement below
  */
-DELETE P1 
-    FROM Person P1 ,Person P2 
-WHERE  
-    P1.Email = P2.Email AND P1.Id >P2.Id;
+DELETE p1 FROM Person p1
+INNER JOIN Person p2 
+  ON p1.email = p2.email AND p1.id > p2.id;
