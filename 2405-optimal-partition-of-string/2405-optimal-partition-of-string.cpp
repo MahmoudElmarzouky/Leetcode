@@ -2,18 +2,19 @@ class Solution {
     set<char>st;
 public:
     int partitionString(string s) {
-        int ans=1;
-        for(int i=0;i<s.length();i++){
-            if(st.count(s[i])){
+        
+        vector<int> lastSeen(26, -1);
+        
+        int ans = 1, substringStart = 0;
+
+        for (int i = 0; i < s.length(); i++) {
+            if (lastSeen[s[i] - 'a'] >= substringStart) {
                 ans++;
-             //   s.clear();
-                set<char>temp;
-                st=temp;
-                st.insert(s[i]);
-            }else {
-                st.insert(s[i]);
+                substringStart = i;
             }
+            lastSeen[s[i] - 'a'] = i;
         }
+
         return ans;
     }
 };
